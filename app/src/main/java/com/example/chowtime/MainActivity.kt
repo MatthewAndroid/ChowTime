@@ -48,7 +48,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MealSuggestionScreen() {
     val showTimePicker = remember { mutableStateOf(false) }
-    val mealType = remember { mutableStateOf("") }
+    val mealType = remember { mutableStateOf("Hello!") }
+    val mealImage = remember { mutableStateOf(R.drawable.defaultpic) }
 
     Column(
         modifier = Modifier
@@ -59,13 +60,24 @@ fun MealSuggestionScreen() {
     ) {
         if (showTimePicker.value) {
             TimeSelectorButton(
-                onConfirm = { meal ->
+                onConfirm = { meal, imageResult ->
                     mealType.value = meal
+                    mealImage.value = imageResult
                     showTimePicker.value = false
                 },
                 onDismiss = { showTimePicker.value = false }
             )
         } else {
+
+            // image based on meal type for given time
+            Image(
+                painter = painterResource(id = mealImage.value),
+                contentDescription = "Meal Image",
+                modifier = Modifier
+                    .size(200.dp)
+                    .padding(16.dp),
+                contentScale = ContentScale.Fit
+            )
 
             Spacer(modifier = Modifier.height(24.dp))
 
@@ -80,7 +92,7 @@ fun MealSuggestionScreen() {
 
             // description
             Text(
-                text = "prep ",
+                text = "Choose a time to get a meal suggestion",
                 fontSize = 14.sp,
                 color = Color.Gray,
                 textAlign = TextAlign.Center
@@ -104,7 +116,8 @@ fun MealSuggestionScreen() {
 
             // reset button
             Button(
-                onClick = { mealType.value = "" },
+                onClick = { mealType.value = "Hello!"
+                    mealImage.value = R.drawable.defaultpic },
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
                     .height(50.dp)
@@ -123,7 +136,8 @@ fun MealSuggestionScreen() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TimeSelectorButton(
-    onConfirm: (String) -> Unit = {},
+    //takes string and int as parameters had to add in weird stuff to make it work in the curly brackets
+    onConfirm: (String, Int) -> Unit = { _, _ -> },
     onDismiss: () -> Unit = {}
 ) {
     //time picker state must be set to initialise it so i set it to current time
@@ -141,26 +155,74 @@ fun TimeSelectorButton(
         )
         // row to hold buttons and make them evenly spaced
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-            Button(onClick = onDismiss) {
-                Text("Close")
+            Button(onClick = onDismiss,
+                    colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF7A36FF)
+                    )) {
+                Text("Close", color = Color.White)
             }
             Button(onClick = {
                 val selectedHour = timePickerState.hour
                 val meal = getMealType(selectedHour)
-                onConfirm(meal)
-            }) {
-                Text("Select")
+                val imageRes = getImage(meal)
+                onConfirm(meal, imageRes)
+            },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF7A36FF)
+                )
+            ) {
+                Text("Select", color = Color.White)
             }
         }
     }
 }
 
+//function to get image based on meal type probably a better way to do this but it works lol
+fun getImage(meal: String): Int {
+    val imageRes = if (meal == "Pancakes") {
+        R.drawable.pancakes
+    } else if (meal == "Omelette") {
+        R.drawable.omelette
+    } else if (meal == "Smoothie") {
+        R.drawable.smoothie
+    } else if (meal == "Fruit Salad") {
+        R.drawable.fruitsalad
+    } else if (meal == "Yogurt") {
+        R.drawable.yogurt
+    } else if (meal == "Chocolate") {
+        R.drawable.chocolate
+    } else if (meal == "Sandwich") {
+        R.drawable.sandwich
+    } else if (meal == "Salad") {
+        R.drawable.salad
+    } else if (meal == "Soup") {
+        R.drawable.soup
+    } else if (meal == "Cookies") {
+        R.drawable.cookie
+    } else if (meal == "Muffin") {
+        R.drawable.muffin
+    } else if (meal == "Tea") {
+        R.drawable.tea
+    } else if (meal == "Steak") {
+        R.drawable.steak
+    } else if (meal == "Pasta") {
+        R.drawable.pasta
+    } else if (meal == "Grilled Chicken") {
+        R.drawable.chicken
+    } else {
+        R.drawable.defaultpic
+    }
+
+    return imageRes
+}
+
 fun getMealType(hour: Int): String {
     val morningMeals = arrayOf("Pancakes", "Omelette", "Smoothie")
-    val midMorningMeals = arrayOf("Fruit Salad", "Yogurt", "Granola Bar")
+    val midMorningMeals = arrayOf("Fruit Salad", "Yogurt", "Chocolate")
     val afternoonMeals = arrayOf("Sandwich", "Salad", "Soup")
     val midAfternoonMeals = arrayOf("Cookies", "Muffin", "Tea")
     val dinnerMeals = arrayOf("Steak", "Pasta", "Grilled Chicken")
+    //arrays of foods to choose from based on time of day
 
     // Log the selected hour
     Log.d("MealSuggestion", "Selected hour: $hour")
@@ -182,4 +244,5 @@ fun getMealType(hour: Int): String {
     } else {
         return "No meal"
     }
+
 }
