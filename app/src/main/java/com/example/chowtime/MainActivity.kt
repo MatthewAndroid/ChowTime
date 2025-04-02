@@ -93,7 +93,7 @@ fun MealSuggestionScreen() {
                 onClick = { showTimePicker.value = true },
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
-                    .height(50.dp),
+                    .height(50.dp).padding(8.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF7A36FF)
                 ),
@@ -107,7 +107,8 @@ fun MealSuggestionScreen() {
                 onClick = { mealType.value = "" },
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
-                    .height(50.dp),
+                    .height(50.dp)
+                    .padding(8.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF7A36FF)
                 ),
