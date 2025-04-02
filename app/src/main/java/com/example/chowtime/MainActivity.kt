@@ -2,9 +2,11 @@ package com.example.chowtime
 
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,12 +22,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.chowtime.ui.theme.ChowTimeTheme
+import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -142,19 +147,24 @@ fun getMealType(hour: Int): String {
     val midAfternoonMeals = arrayOf("Cookies", "Muffin", "Tea")
     val dinnerMeals = arrayOf("Steak", "Pasta", "Grilled Chicken")
 
+    // Log the selected hour
+    Log.d("MealSuggestion", "Selected hour: $hour")
+
     //returns meal based on time of day from timeselector button :)
-    if(hour < 9 && hour > 5){
+    //also using range to check if hour is between certain times because it's easier to read and
+    //less verbose than using && operator e.g instead of if(hour >= 5 && hour <= 9)
+
+    if (hour in 5..9) {
         return morningMeals.random()
-    } else if(hour < 11 && hour > 9){
+    } else if (hour in 10..11) {
         return midMorningMeals.random()
-    } else if(hour < 14 && hour > 12){
+    } else if (hour in 12..14) {
         return afternoonMeals.random()
-    } else if(hour < 17 && hour > 15){
+    } else if (hour in 15..17) {
         return midAfternoonMeals.random()
-    } else if(hour < 21 && hour > 18){
+    } else if (hour in 18..21) {
         return dinnerMeals.random()
     } else {
         return "No meal"
-
     }
 }
