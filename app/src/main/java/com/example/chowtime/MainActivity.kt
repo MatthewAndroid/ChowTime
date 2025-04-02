@@ -101,6 +101,20 @@ fun MealSuggestionScreen() {
             ) {
                 Text(text = "Select Time", color = Color.White, fontSize = 16.sp)
             }
+
+            // reset button
+            Button(
+                onClick = { mealType.value = "" },
+                modifier = Modifier
+                    .fillMaxWidth(0.8f)
+                    .height(50.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF7A36FF)
+                ),
+                shape = RoundedCornerShape(30.dp)
+            ) {
+                Text(text = "Reset", color = Color.White, fontSize = 16.sp)
+            }
         }
     }
 }
