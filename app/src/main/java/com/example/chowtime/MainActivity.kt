@@ -30,7 +30,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.chowtime.ui.theme.ChowTimeTheme
-import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -210,7 +209,7 @@ fun getImage(meal: String): Int {
     } else if (meal == "Grilled Chicken") {
         R.drawable.chicken
     } else {
-        R.drawable.defaultpic
+        R.drawable.cancel
     }
 
     return imageRes
