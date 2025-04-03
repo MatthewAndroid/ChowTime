@@ -34,8 +34,8 @@ https://youtu.be/-w5b_4D5XT4
 
 ## Code Structure
 - **MainActivity.kt**: Entry point of the application.
-- **MealSuggestionScreen.kt**: UI for displaying meal suggestions.
-- **TimeSelectorButton.kt**: Handles time selection.
+- **MealSuggestionScreen**: UI for displaying meal suggestions.
+- **TimeSelectorButton**: Handles time selection.
 - **getMealType()**: Determines a meal based on the selected time.
 - **getImage()**: Retrieves an image associated with the suggested meal.
 
