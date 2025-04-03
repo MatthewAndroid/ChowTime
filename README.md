@@ -21,7 +21,7 @@ here
 ## Installation
 1. Clone this repository:
    ```sh
-   git clone https://github.com/your-repo/chowtime.git
+   git clone https://github.com/MatthewAndroid/ChowTime
    ```
 2. Open the project in **Android Studio**.
 3. Build and run the project on an **emulator** or **physical device**.
