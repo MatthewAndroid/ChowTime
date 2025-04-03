@@ -1,4 +1,4 @@
-# ChowTime - Meal Suggestion App
+# 🍴ChowTime - Meal Suggestion App🍴
 
 ## Overview
 ChowTime is an Android app that suggests meals based on the selected time of the day. It provides meal recommendations along with corresponding images, enhancing the user experience with an interactive and visually appealing UI.
