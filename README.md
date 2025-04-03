@@ -49,19 +49,18 @@ here
 | 6 PM - 9 PM | Steak, Pasta, Grilled Chicken |
 | Other Times | "No meal" |
 
+
 ## Screenshots
 
-Home Page
----
-![Home Page](https://github.com/user-attachments/assets/97c16727-cdaa-43d1-ac68-bc84f8213fc1)
+### Home Page
+<img src="https://github.com/user-attachments/assets/97c16727-cdaa-43d1-ac68-bc84f8213fc1" width="300">
 
-TimePicker Screen
----
-![TimePicker](https://github.com/user-attachments/assets/9a3df44e-eaba-42ea-b4fc-8b927009c0d8)
+### TimePicker Screen
+<img src="https://github.com/user-attachments/assets/9a3df44e-eaba-42ea-b4fc-8b927009c0d8" width="300">
 
-Home Screen after time picked
----
-![TimePicked](https://github.com/user-attachments/assets/95cfdda1-e020-4add-8684-7c2598bd3bab)
+### Home Screen after time picked
+<img src="https://github.com/user-attachments/assets/95cfdda1-e020-4add-8684-7c2598bd3bab" width="300">
+
 
 
 
